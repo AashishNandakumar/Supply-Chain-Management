@@ -1,0 +1,202 @@
+.body {
+  background-color: rgb(151, 180, 33);
+  /* min-height: 90vh; */
+  z-index: 1;
+  /* display: unset; */
+  overflow: visible;
+}
+
+.banner {
+  text-align: center;
+  background-color: #e63946;
+  color: #f1faee;
+  height: 1.3rem;
+  letter-spacing: 0.1rem;
+  position: relative;
+  white-space: nowrap;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* NAVBAR STARTS */
+.navbar {
+  display: flex;
+  height: 4.5rem;
+  background-color: #1d3557;
+  color: #f1faee;
+  white-space: nowrap;
+  width: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  /* align-self: flex-start;
+  height: auto; */
+
+}
+
+/* .fakeNavSpace {
+  width: 100%;
+  height: 4.5rem;
+  background-color: #fff;
+} */
+
+.sticky {
+  position: sticky;
+  top: 1.2rem;
+
+  z-index: 2;
+}
+
+.navbarDivRight {
+  /* background-color: aqua; */
+  flex: 0.4;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+
+.navbarDivRight a {
+  margin: 25px;
+  letter-spacing: 0.1rem;
+  transition: 1s;
+
+  background-image: linear-gradient(to right, #ffffff, #ffffff);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  /* Adjust the thickness of the underline */
+  transition: background-size 0.5s ease-in-out;
+  /* Set the desired transition duration */
+
+}
+
+#anchor:hover {
+  background-size: 100% 2px;
+}
+
+.navbarDivLeft {
+  /* background-color: blueviolet; */
+  position: relative;
+  flex: 0.6;
+  padding: 5px;
+  letter-spacing: 0.1rem;
+  margin: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+/* NAVBAR ENDS */
+
+
+/* INTRO BEGINS */
+
+.intro {
+  background-color: #ffffff;
+  color: #14213d;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-image: url('../public/IntroImg1.svg');
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: 135% 95%;
+
+
+}
+
+
+.introDiv {
+  /* background-color: aqua; */
+  width: 55%;
+
+  text-align: left;
+  padding: 2rem;
+  margin-left: 3%;
+}
+
+.introDivImg {
+  background-image: url('../public/IntroImg1.svg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 50%;
+  /* background-color: #e63946; */
+}
+
+#intro1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 3% 0 0 0;
+  letter-spacing: 0.1rem;
+  font-size: small;
+
+}
+
+#H1 {
+  margin: 1% 0 0 0;
+  letter-spacing: 0.15rem;
+  font-size: xxx-large;
+
+  background: linear-gradient(45deg, #f72585 10%, #ffba08 50%, #8338ec 40%);
+  padding: 4px;
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 6px transparent;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#intro2 {
+  margin: 3% 0 0 0;
+  /* padding: 10px; */
+
+}
+
+#intorPara {
+  /* background-color: antiquewhite; */
+  margin: 2% 0 0 0;
+
+  width: 90%;
+}
+
+#introBtn {
+  margin: 3% 0% 0 0;
+  width: 10rem;
+  height: 2.5rem;
+  /* padding: 2%; */
+  padding: 5px;
+  letter-spacing: 0.05rem;
+  border: none;
+  cursor: pointer;
+  background-color: #e63946;
+  color: #f1faee;
+  transition: 1s;
+
+  /* border-radius: 4rem; */
+}
+
+#introBtn:hover {
+
+  margin: 3% 0 0 0;
+  width: 10rem;
+  height: 2.5rem;
+  /* padding: 2%; */
+  padding: 5px;
+  letter-spacing: 0.05rem;
+  border: none;
+  cursor: pointer;
+  background-color: #9f1a25;
+  color: #ffffff;
+}
