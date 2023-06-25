@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Link } from "react-scroll";
 import { useEffect, useState } from "react";
+import CardSlider from "@/public/owl.carousel";
 
 export default function Home() {
   const NavBar = () => {
@@ -39,16 +40,16 @@ export default function Home() {
                 duration={500}
                 offset={-50}
               >
-                SERVICES
+                SPECIALITIES
               </Link>
               <Link
                 id={styles.anchor}
-                to="MORE"
+                to="SERVICE"
                 smooth={true}
                 duration={500}
                 offset={-50}
               >
-                MORE
+                SERVICES
               </Link>
             </div>
           </div>
@@ -74,6 +75,7 @@ export default function Home() {
             </p>
             <button id={styles.introBtn}>READ MORE</button>
           </div>
+          {/* Modificaions */}
         </section>
       </>
     );
@@ -129,13 +131,18 @@ export default function Home() {
     );
   };
 
-  const More = () => {
+  const Services = () => {
     return (
       <>
-        <section id="MORE"></section>
+        <section className={styles.ServicesSection} id="SERVICE">
+          <div className={styles.ServicesDiv}>
+            <CardSlider />
+          </div>
+        </section>
       </>
     );
   };
+
   return (
     <>
       <Head>
@@ -166,6 +173,7 @@ export default function Home() {
         <NavBar />
         <Intro />
         <Specialities />
+        <Services />
       </main>
     </>
   );

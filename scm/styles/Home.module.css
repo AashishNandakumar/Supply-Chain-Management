@@ -42,12 +42,13 @@
   top: 0;
   width: 100%;
   white-space: nowrap;
+  opacity: 0.9;
 
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
+  z-index: 2;
 }
 
 /* NAVBAR STARTS */
@@ -150,9 +151,9 @@
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-size: 135% 95%;
-
-
 }
+
+
 
 
 .introDiv {
@@ -241,10 +242,10 @@
 /* SPECIALITIES BEGINS */
 
 .SpecialitiesSection {
-  min-height: 100vh;
+  min-height: 110vh;
   background-color: #14213d;
   color: #e5e5e5;
-  padding: 10px;
+  padding: 20px;
 
 }
 
@@ -377,4 +378,26 @@
   background-color: #0a9396;
 
   color: #ffffff;
+}
+
+/* SPECIALITIES END */
+
+/* SERVICES STARTS */
+
+.ServicesSection {
+  background-color: #76c893;
+  min-height: 100vh;
+
+}
+
+.ServicesDiv {
+  /* width: 50%; */
+  position: relative;
+  background-color: #e6e9f1;
+  top: 5rem;
+  margin-left: 3%;
+  margin-right: 3%;
+
+  height: 200px;
+
 }
