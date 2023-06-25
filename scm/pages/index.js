@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import { Link } from "react-scroll";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const NavBar = () => {
@@ -9,6 +11,7 @@ export default function Home() {
       <>
         {/* The expression ${styles.navbar} and ${styles.sticky} are 
         used to concatenate CSS classes dynamically using template literals (${}) in JavaScript. */}
+        <div className={styles.dummynavbarSpace}></div>
         <nav className={`${styles.navbar} ${styles.sticky}`}>
           <div className={styles.navbarDivLeft}>
             <div className={styles.navBarLeftSub}>
@@ -20,15 +23,33 @@ export default function Home() {
           </div>
           <div className={styles.navbarDivRight}>
             <div className={styles.navBarRightSub}>
-              <a href="" id={styles.anchor}>
+              <Link
+                id={styles.anchor}
+                to="INTRO"
+                smooth={true}
+                duration={500}
+                offset={-50}
+              >
                 HOME
-              </a>
-              <a href="" id={styles.anchor}>
-                ABOUT US
-              </a>
-              <a href="" id={styles.anchor}>
-                CONTACT US
-              </a>
+              </Link>
+              <Link
+                id={styles.anchor}
+                to="SERVICES"
+                smooth={true}
+                duration={500}
+                offset={-50}
+              >
+                SERVICES
+              </Link>
+              <Link
+                id={styles.anchor}
+                to="MORE"
+                smooth={true}
+                duration={500}
+                offset={-50}
+              >
+                MORE
+              </Link>
             </div>
           </div>
         </nav>
@@ -39,7 +60,7 @@ export default function Home() {
   const Intro = () => {
     return (
       <>
-        <section className={styles.intro}>
+        <section className={styles.intro} id="INTRO">
           <div className={styles.introDiv}>
             <p id={styles.intro1}>DECENTRALIZED</p>
             <h1 id={styles.H1}>
@@ -61,7 +82,57 @@ export default function Home() {
   const Specialities = () => {
     return (
       <>
-        <section></section>
+        <section className={styles.SpecialitiesSection} id="SERVICES">
+          <div className={styles.SpecialitiesDiv}>
+            <p id={styles.SpecialitiesPara}>WHAT WE OFFER</p>
+            <h2 id={styles.SpecialitiesHeader}>Our Specialities</h2>
+          </div>
+          <div className={styles.SpecialitiesCardParent}>
+            <div className={styles.SpecialitiesCard}>
+              <img src="logo-2.png" id={styles.SpecialitesCardImg} />
+              <br />
+              <h2 id={styles.SpecialitiesCardHead}>Decentralized Process</h2>
+              <p className={styles.SpecialitiesCardPara}>
+                No need for a concept of trust
+              </p>
+            </div>
+            <div className={styles.SpecialitiesCard}>
+              <img src="logo-4.png" id={styles.SpecialitesCardImg} />
+              <br />
+              <h2 id={styles.SpecialitiesCardHead}>Transparent Finances</h2>
+              <p className={styles.SpecialitiesCardPara}>
+                Record of every transaction available
+              </p>
+            </div>
+            <div className={styles.SpecialitiesCard}>
+              <img src="logo-1a.png" id={styles.SpecialitesCardImg} />
+              <br />
+              <h2 id={styles.SpecialitiesCardHead}>Seamless Delivery</h2>
+              <p className={styles.SpecialitiesCardPara}>
+                Smooth delivering of goods
+              </p>
+            </div>
+            <div className={styles.SpecialitiesCard}>
+              <img src="logo-3.png" id={styles.SpecialitesCardImg} />
+              <br />
+              <h2 id={styles.SpecialitiesCardHead}>Enhanced Security</h2>
+              <p className={styles.SpecialitiesCardPara}>
+                No chance of a single point of failure
+              </p>
+            </div>
+          </div>
+          <div className={styles.SpecialitesDivBtn}>
+            <button id={styles.SpecialitesBtn}>MORE</button>
+          </div>
+        </section>
+      </>
+    );
+  };
+
+  const More = () => {
+    return (
+      <>
+        <section id="MORE"></section>
       </>
     );
   };
@@ -78,10 +149,21 @@ export default function Home() {
       </Head>
       <main className={styles.body}>
         <div className={styles.banner}>
-          <p>Beta testing!</p>
+          <p>Under Development!</p>
         </div>
-        <NavBar />
+        <Link
+          id={styles.anchor}
+          to="INTRO"
+          smooth={true}
+          duration={500}
+          offset={-50}
+        >
+          <div className={styles.upBtnDiv}>
+            <button id={styles.upBtn}>&uarr;</button>
+          </div>
+        </Link>
 
+        <NavBar />
         <Intro />
         <Specialities />
       </main>

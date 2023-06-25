@@ -1,9 +1,35 @@
 .body {
-  background-color: rgb(151, 180, 33);
+  /* background-color: rgb(151, 180, 33); */
   /* min-height: 90vh; */
   z-index: 1;
   /* display: unset; */
   overflow: visible;
+}
+
+.upBtnDiv {
+  position: fixed;
+  right: 2%;
+  bottom: 8%;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+}
+
+#upBtn {
+  text-align: center;
+  font-size: x-large;
+  font-weight: 900;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #dddf00;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+
 }
 
 .banner {
@@ -12,7 +38,9 @@
   color: #f1faee;
   height: 1.3rem;
   letter-spacing: 0.1rem;
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
   white-space: nowrap;
 
   display: flex;
@@ -23,6 +51,12 @@
 }
 
 /* NAVBAR STARTS */
+
+.dummynavbarSpace {
+  height: 5.8rem;
+  columns: white;
+}
+
 .navbar {
   display: flex;
   height: 4.5rem;
@@ -34,6 +68,7 @@
 
   /* align-self: flex-start;
   height: auto; */
+  opacity: 0.9;
 
 }
 
@@ -44,10 +79,11 @@
 } */
 
 .sticky {
-  position: sticky;
-  top: 1.2rem;
+  position: fixed;
+  top: 1.3rem;
+  width: 100%;
 
-  z-index: 2;
+  z-index: 1;
 }
 
 .navbarDivRight {
@@ -78,6 +114,7 @@
 
 #anchor:hover {
   background-size: 100% 2px;
+  cursor: pointer;
 }
 
 .navbarDivLeft {
@@ -198,5 +235,146 @@
   border: none;
   cursor: pointer;
   background-color: #9f1a25;
+  color: #ffffff;
+}
+
+/* SPECIALITIES BEGINS */
+
+.SpecialitiesSection {
+  min-height: 100vh;
+  background-color: #14213d;
+  color: #e5e5e5;
+  padding: 10px;
+
+}
+
+
+
+.SpecialitiesDiv {
+  /* background-color: #1d3557; */
+  text-align: center;
+  position: relative;
+  top: 2rem;
+  padding: 10px;
+}
+
+#SpecialitiesPara {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 5.5% 0 0 0;
+  letter-spacing: 0.1rem;
+  font-size: small;
+
+  position: relative;
+}
+
+#SpecialitiesHeader {
+  margin: 1%;
+  letter-spacing: 0.15rem;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.SpecialitiesCardParent {
+  padding: 60px;
+  text-align: center;
+  /* background-color: #e63946; */
+  position: relative;
+  top: 2.0rem;
+  margin-top: -2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.SpecialitiesCard {
+  padding: 20px;
+  margin: 2%;
+  width: 18rem;
+  height: 18rem;
+  /* border: 2px solid black; */
+  border-radius: 2rem;
+  background-color: #fca311;
+  color: #14213d;
+  transition: 1s;
+
+
+}
+
+.SpecialitiesCard:hover {
+  padding: 20px;
+  margin: 2%;
+  width: 18rem;
+  height: 18rem;
+  /* border: 2px solid black; */
+  border-radius: 2rem;
+  background-color: #76c893;
+  transform: scale(1.1, 1.1);
+  color: #14213d;
+
+
+}
+
+#SpecialitesCardImg {
+  position: relative;
+  top: 2rem;
+}
+
+#SpecialitiesCardHead {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 0.1rem;
+  font-size: larger;
+  position: relative;
+  top: 3rem;
+  white-space: nowrap;
+
+}
+
+.SpecialitiesCardPara {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  position: relative;
+  top: 4rem;
+}
+
+.SpecialitesDivBtn {
+  margin-top: -1.5%;
+  text-align: center;
+  position: relative;
+  top: 2rem;
+  /* background-color: #8338ec; */
+  padding: 10px;
+
+}
+
+#SpecialitesBtn {
+
+  /* margin: 3% 0% 0 0; */
+  width: 10rem;
+  height: 2.5rem;
+  /* padding: 2%; */
+  padding: 5px;
+  letter-spacing: 0.05rem;
+  border: none;
+  cursor: pointer;
+  background-color: #e63946;
+
+  color: #f1faee;
+  transition: 1s;
+  /* border-radius: 2rem; */
+
+}
+
+#SpecialitesBtn:hover {
+
+  width: 10rem;
+  height: 2.5rem;
+  /* padding: 2%; */
+  padding: 5px;
+  letter-spacing: 0.05rem;
+  border: none;
+  cursor: pointer;
+  background-color: #0a9396;
+
   color: #ffffff;
 }
