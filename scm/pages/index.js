@@ -82,10 +82,19 @@ export default function Home() {
                 id={styles.anchor}
                 to="SERVICE"
                 smooth={true}
-                duration={500}
+                duration={600}
                 offset={-50}
               >
                 SERVICES
+              </Link>
+              <Link
+                id={styles.anchor}
+                to="CONTRIBUTORS"
+                smooth={true}
+                duration={900}
+                offset={-50}
+              >
+                CONTRIBUTORS
               </Link>
             </div>
           </div>
@@ -172,6 +181,7 @@ export default function Home() {
       <>
         <section className={styles.ServicesSection} id="SERVICE">
           <div className={styles.ServicesDiv}>
+            <p className={styles.ServicesPara}>WHAT WE PROVIDE</p>
             <h1 id={styles.ServicesHeader}>Services</h1>
             <div className={styles.ServicesCarouselContainer}>
               <SimpleCardSlider>
@@ -194,11 +204,57 @@ export default function Home() {
   const FlowProcess = () => {
     return (
       <>
-        <section className={styles.FlowProcessSection}>
-          <h1 className={styles.FlowProcessHeader}>Steps</h1>
+        <section className={styles.FlowProcessSection} id="CONTRIBUTORS">
+          <p className={styles.FlowProcessPara}>CONTRIBUTORS</p>
+          <h1 className={styles.FlowProcessHeader}>Our family</h1>
           <div className={styles.FlowProcessDiv}>
             {/* <FlowProcess /> */}
             <FlowIllustration />
+          </div>
+        </section>
+      </>
+    );
+  };
+
+  const Maps = () => {
+    return (
+      <>
+        <section className={styles.MapSec}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0859374697534!2d77.51600171023918!3d12.90219541634442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fa7243af9c3%3A0x9bed6669a38d1c3!2sRNS%20INSTITUTE%20OF%20TECHNOLOGY!5e0!3m2!1sen!2sin!4v1687779661470!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            // style={marginRight: spacing + 'em'}
+            className={styles.actualMap}
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+          <div className={styles.SignIn}>
+            <div className={styles.innerSignIn}>
+              <p>CONTACT US</p>
+              <h2>
+                Have Questions?
+                <br /> Get in touch with us...
+              </h2>
+              <form className={styles.formS}>
+                <div id={styles.firstIn}>
+                  <input placeholder="First Name" required type="text" />
+                </div>
+                <div id={styles.secondIn}>
+                  <input placeholder="Last Name" required type="text" />
+                </div>
+                <div id={styles.thirdIn}>
+                  <input placeholder="E mail" required type="email" />
+                </div>
+                <div id={styles.fourthIn}>
+                  <input type="checkbox" required value="d" />
+
+                  <label>Agree Terms and Conditions</label>
+                </div>
+                <button id={styles.btnIn}>SUBMIT</button>
+              </form>
+            </div>
           </div>
         </section>
       </>
@@ -224,7 +280,7 @@ export default function Home() {
           id={styles.anchor}
           to="INTRO"
           smooth={true}
-          duration={500}
+          duration={800}
           offset={-50}
         >
           <div className={styles.upBtnDiv}>
@@ -237,6 +293,7 @@ export default function Home() {
         <Specialities />
         <Services />
         <FlowProcess />
+        <Maps />
       </main>
     </>
   );

@@ -391,10 +391,20 @@
 /* SERVICES STARTS */
 
 .ServicesSection {
-  min-height: 110vh;
+  min-height: 120vh;
 
   background-color: #ffffff;
   color: #2b2d42;
+
+}
+
+.ServicesPara {
+  position: relative;
+  top: -0.6rem;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: small;
+  letter-spacing: 0.15rem;
 
 }
 
@@ -403,7 +413,7 @@
   text-align: center;
   top: 0.1rem;
   /* margin: 1%; */
-  margin-bottom: 1%;
+  margin-bottom: 2%;
   letter-spacing: 0.15rem;
   font-size: xx-large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -535,10 +545,21 @@
 /* FLOW PROCESS BEGINS */
 
 .FlowProcessSection {
-  border-top: 10px solid black;
-  min-height: 380vh;
-  background-color: #ffffff;
-  color: #2b2d42;
+  /* border-top: 10px solid black; */
+  min-height: 250vh;
+  background-color: #14213d;
+  color: #e5e5e5;
+}
+
+.FlowProcessPara {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: relative;
+  top: 3rem;
+  text-align: center;
+  letter-spacing: 0.15rem;
+  font-size: small;
+
+
 }
 
 .FlowProcessHeader {
@@ -547,7 +568,7 @@
   top: 4rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-  margin-bottom: 1%;
+  margin-bottom: -1%;
   letter-spacing: 0.15rem;
   font-size: xx-large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -556,4 +577,114 @@
 .FlowProcessDiv {
   position: relative;
   top: 8rem;
+}
+
+/* FLOW PROCESS ENDS */
+.MapSec {
+  border-top: 5px solid white;
+  background-color: #14213d;
+  color: black;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+
+}
+
+.actualMap {
+  width: 100%;
+  height: 40rem;
+  position: relative;
+  z-index: 0;
+  /* height: 50%; */
+  /* height: 100%; */
+}
+
+.SignIn {
+  background-color: #b3d7bd;
+  position: absolute;
+  /* top: 200rem; */
+  /* bottom: 0%; */
+  top: 10%;
+  left: 50%;
+  z-index: 5;
+  width: 40rem;
+  height: 35rem;
+  padding: 30px;
+}
+
+.innerSignIn p {
+  text-align: left;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: relative;
+  top: 1.5rem;
+  letter-spacing: 0.15rem;
+  font-size: small;
+}
+
+.innerSignIn h2 {
+  text-align: left;
+  position: relative;
+  top: 2.5rem;
+
+  margin-bottom: -1%;
+  letter-spacing: 0.15rem;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.formS {
+  position: relative;
+  top: 7rem;
+}
+
+.formS {
+  display: grid;
+  gap: 10px;
+}
+
+.formS input {
+  border: none;
+  background-color: #b3d7bd;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  width: 15rem;
+  color: black;
+}
+
+#firstIn {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+#secondIn {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+#thirdIn {
+  grid-row: 4;
+  grid-column: 1;
+}
+
+#fourthIn {
+  /* position: relative;
+  left: 0; */
+  /* display: flex; */
+  grid-row: 8;
+  grid-column: span 2;
+}
+
+#fourthIn input[type='checkbox'] {
+  margin-right: 5px;
+  /* Adjust this value as needed */
+}
+
+#btnIn {
+  grid-row: 12;
+  grid-column: 1;
+  width: 5rem;
 }

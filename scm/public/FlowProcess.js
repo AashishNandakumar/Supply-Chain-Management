@@ -85,7 +85,7 @@ const FlowIllustration = () => {
         </div>
         <div className={styles.gridItem7}>
           <div className={styles.gridImg}>
-            <img src="logo-4.png" alt="supplier" />
+            <img src="serviceProvider.png" alt="supplier" />
           </div>
           <div className={styles.gridDescription}>
             <h3>SERVICE PROVIDERS</h3>
@@ -98,7 +98,7 @@ const FlowIllustration = () => {
         </div>
         <div className={styles.gridItem8}>
           <div className={styles.gridImg}>
-            <img src="logo-4.png" alt="supplier" />
+            <img src="financialInstitutions.png" alt="supplier" />
           </div>
           <div className={styles.gridDescription}>
             <h3>FINANCIAL INSTITUTIONS</h3>
@@ -111,7 +111,7 @@ const FlowIllustration = () => {
         </div>
         <div className={styles.gridItem9}>
           <div className={styles.gridImg}>
-            <img src="logo-4.png" alt="supplier" />
+            <img src="regulatoryBodies.png" alt="supplier" />
           </div>
           <div className={styles.gridDescription}>
             <h3>REQULATORY BODIES</h3>
@@ -124,13 +124,13 @@ const FlowIllustration = () => {
         </div>
         <div className={styles.gridItem10}>
           <div className={styles.gridImg}>
-            <img src="logo-4.png" alt="supplier" />
+            <img src="shareHolders.png" alt="supplier" />
           </div>
           <div className={styles.gridDescription}>
             <h3>SHAREHOLDERS</h3>
             <p>
-              Duis commodo massa ornare ex tempor lacinia. <br />
-              Nam maximus eget eros quis.
+              Duis commodo massa ornare ex tempor lacinia. Nam <br />
+              maximus eget eros quis.
             </p>
             <button>View Live</button>
           </div>
