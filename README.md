@@ -1,5 +1,7 @@
 # ChainLink
 
+> This Company is still under development, the backend part remains...
+
 ## Introduction
 
 Welcome to ChainLink, a cutting-edge decentralized supply chain solutions company built on NextJS, FLOW blockchain, and Cadence. Our mission is to revolutionize the way supply chains operate, bringing transparency, efficiency, and trust to the forefront. With our innovative technology stack and forward-thinking approach, we empower businesses to streamline their supply chain processes and embrace the future of decentralized commerce.
