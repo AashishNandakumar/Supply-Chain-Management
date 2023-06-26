@@ -25,11 +25,12 @@
   height: 3rem;
   border-radius: 50%;
   background-color: #dddf00;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
   z-index: 3;
   transition: 1s;
+
 
 }
 
@@ -580,8 +581,10 @@
 }
 
 /* FLOW PROCESS ENDS */
+
+/* MAPS BEGIN */
 .MapSec {
-  border-top: 5px solid white;
+  /* border-top: 5px solid white; */
   background-color: #14213d;
   color: black;
   min-height: 100vh;
@@ -596,7 +599,7 @@
 
 .actualMap {
   width: 100%;
-  height: 40rem;
+  height: 45rem;
   position: relative;
   z-index: 0;
   /* height: 50%; */
@@ -604,7 +607,7 @@
 }
 
 .SignIn {
-  background-color: #b3d7bd;
+  background-color: #4ad66d;
   position: absolute;
   /* top: 200rem; */
   /* bottom: 0%; */
@@ -614,6 +617,7 @@
   width: 40rem;
   height: 35rem;
   padding: 30px;
+  border-radius: 20px;
 }
 
 .innerSignIn p {
@@ -648,7 +652,7 @@
 
 .formS input {
   border: none;
-  background-color: #b3d7bd;
+  background-color: #4ad66d;
   border-bottom: 1px solid black;
   padding: 10px;
   width: 15rem;
@@ -666,7 +670,7 @@
 }
 
 #thirdIn {
-  grid-row: 4;
+  grid-row: 3;
   grid-column: 1;
 }
 
@@ -674,17 +678,188 @@
   /* position: relative;
   left: 0; */
   /* display: flex; */
-  grid-row: 8;
+  /* grid-row: 8;
+  grid-column: span 2; */
+  /* background-color: #8338ec; */
+  position: relative;
+  top: 7rem;
+  left: -1rem;
+  text-align: left;
   grid-column: span 2;
 }
 
-#fourthIn input[type='checkbox'] {
-  margin-right: 5px;
-  /* Adjust this value as needed */
+#fourthIn input {
+  position: relative;
+  /* left: -6rem;
+  margin-right: -12rem; */
+  cursor: pointer;
+  width: 20px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
+
+
 #btnIn {
-  grid-row: 12;
+  grid-row: 15;
   grid-column: 1;
   width: 5rem;
+  width: 10rem;
+  height: 3rem;
+  /* padding: 2%; */
+  padding: 5px;
+  letter-spacing: 0.05rem;
+  border: none;
+  cursor: pointer;
+  background-color: #4774d6;
+  color: #ffffff;
+  transition: 1s;
+}
+
+#btnIn:hover {
+  background-color: #14213d;
+}
+
+#FormAnchor {
+  text-decoration: underline;
+}
+
+#FormAnchor:hover {
+  color: #9f1a25;
+}
+
+
+/* MAPS END */
+
+/* FOOTER BEGINS */
+
+.FooterSec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 100px; */
+  height: 20rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #05091b;
+}
+
+.FooterDiv1 {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* border: 1px solid white; */
+  width: 90%;
+  position: relative;
+}
+
+#FooterHrLine {
+  /* border-top: 2px solid white; */
+  width: 90%;
+}
+
+.FooterDesc {
+  /* border: 2px solid white; */
+  padding: 10px;
+  position: relative;
+  left: 1px;
+  flex: 0.7;
+  height: 15rem;
+}
+
+.FooterDesc h2 {
+  font-size: xx-large;
+  color: #F3F3F4;
+
+  text-align: left;
+  position: relative;
+  top: 2.1rem;
+
+  /* margin-bottom: -1%; */
+  letter-spacing: 0.15rem;
+}
+
+.FooterAddress {
+  /* text-align: center; */
+  /* border: 2px solid white; */
+  flex: 0.4;
+}
+
+.FooterAddress h3 {
+  font-size: x-large;
+
+  text-align: left;
+  position: relative;
+  top: 3rem;
+  color: #F3F3F4;
+
+  /* margin-bottom: -1%; */
+  letter-spacing: 0.15rem;
+}
+
+.FooterAddress p {
+  font-size: small;
+  line-height: 1.8;
+  text-align: left;
+  position: relative;
+  top: 3.8rem;
+  color: #ABB3BC;
+  /* margin-bottom: -1%; */
+  letter-spacing: 0.15rem;
+}
+
+.contact {
+  /* border: 2px solid white; */
+  position: relative;
+  right: 0;
+  flex: 0.3;
+}
+
+.contact h3 {
+  font-size: x-large;
+
+  text-align: left;
+  position: relative;
+  top: 3rem;
+  color: #F3F3F4;
+  /* margin-bottom: -1%; */
+  letter-spacing: 0.15rem;
+}
+
+.contact p {
+  font-size: small;
+
+  text-align: left;
+  position: relative;
+  top: 3.8rem;
+  font-weight: 200;
+  /* margin-bottom: -1%; */
+  letter-spacing: 0.15rem;
+  color: #ABB3BC;
+
+}
+
+.contact p a {
+  text-decoration: underline;
+  /* color: #e63946; */
+  transition: 1s;
+}
+
+.contact p a:hover {
+  text-decoration: underline;
+  color: #9f1a25;
+}
+
+.FooterDiv2 {
+  margin-top: 1%;
+  padding: 10px;
+}
+
+.FooterDiv2 h2 {
+  font-size: medium;
+  letter-spacing: 0.15rem;
+
+  color: #F3F3F4;
+
 }

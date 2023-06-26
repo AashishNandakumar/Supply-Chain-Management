@@ -96,6 +96,15 @@ export default function Home() {
               >
                 CONTRIBUTORS
               </Link>
+              <Link
+                id={styles.anchor}
+                to="CONTACT"
+                smooth={true}
+                duration={1500}
+                offset={-50}
+              >
+                CONTACT US
+              </Link>
             </div>
           </div>
         </nav>
@@ -219,7 +228,7 @@ export default function Home() {
   const Maps = () => {
     return (
       <>
-        <section className={styles.MapSec}>
+        <section className={styles.MapSec} id="CONTACT">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0859374697534!2d77.51600171023918!3d12.90219541634442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fa7243af9c3%3A0x9bed6669a38d1c3!2sRNS%20INSTITUTE%20OF%20TECHNOLOGY!5e0!3m2!1sen!2sin!4v1687779661470!5m2!1sen!2sin"
             width="600"
@@ -245,16 +254,54 @@ export default function Home() {
                   <input placeholder="Last Name" required type="text" />
                 </div>
                 <div id={styles.thirdIn}>
-                  <input placeholder="E mail" required type="email" />
+                  <input placeholder="Email" required type="email" />
                 </div>
                 <div id={styles.fourthIn}>
                   <input type="checkbox" required value="d" />
-
-                  <label>Agree Terms and Conditions</label>
+                  <label>
+                    <a href="" id={styles.FormAnchor}>
+                      Agree terms and conditions
+                    </a>
+                  </label>
                 </div>
                 <button id={styles.btnIn}>SUBMIT</button>
               </form>
             </div>
+          </div>
+        </section>
+      </>
+    );
+  };
+
+  const Footer = () => {
+    return (
+      <>
+        <section className={styles.FooterSec}>
+          <div className={styles.FooterDiv1}>
+            <div className={styles.FooterDesc}>
+              <h2>
+                Welcome to the decentralized
+                <br /> future.
+              </h2>
+            </div>
+            <div className={styles.FooterAddress}>
+              <h3>Address</h3>
+              <p>
+                India - <br /> 762, 18th cross, RR nagar
+                <br />
+                Bangalore - 560098
+              </p>
+            </div>
+            <div className={styles.contact}>
+              <h3>Say Hi</h3>
+              <p>
+                <a href="">aashishnkumar@gmail.com</a>
+              </p>
+            </div>
+          </div>
+          <hr id={styles.FooterHrLine} />
+          <div className={styles.FooterDiv2}>
+            <h2>AashishNandakumar &copy; 2023. All Rights Reserved</h2>
           </div>
         </section>
       </>
@@ -280,7 +327,7 @@ export default function Home() {
           id={styles.anchor}
           to="INTRO"
           smooth={true}
-          duration={800}
+          duration={1500}
           offset={-50}
         >
           <div className={styles.upBtnDiv}>
@@ -294,6 +341,7 @@ export default function Home() {
         <Services />
         <FlowProcess />
         <Maps />
+        <Footer />
       </main>
     </>
   );
