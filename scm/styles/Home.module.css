@@ -29,6 +29,12 @@
   border: none;
   cursor: pointer;
   z-index: 3;
+  transition: 1s;
+
+}
+
+#upBtn:hover {
+  background-color: #9da003;
 
 }
 
@@ -38,7 +44,7 @@
   color: #f1faee;
   height: 1.3rem;
   letter-spacing: 0.1rem;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   width: 100%;
   white-space: nowrap;
@@ -53,10 +59,10 @@
 
 /* NAVBAR STARTS */
 
-.dummynavbarSpace {
+/* .dummynavbarSpace {
   height: 5.8rem;
   columns: white;
-}
+} */
 
 .navbar {
   display: flex;
@@ -80,7 +86,7 @@
 } */
 
 .sticky {
-  position: fixed;
+  /* position: fixed; */
   top: 1.3rem;
   width: 100%;
 
@@ -385,19 +391,169 @@
 /* SERVICES STARTS */
 
 .ServicesSection {
-  background-color: #76c893;
-  min-height: 100vh;
+  min-height: 110vh;
+
+  background-color: #ffffff;
+  color: #2b2d42;
+
+}
+
+#ServicesHeader {
+  position: relative;
+  text-align: center;
+  top: 0.1rem;
+  /* margin: 1%; */
+  margin-bottom: 1%;
+  letter-spacing: 0.15rem;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.ServicesCarouselContainer {
+  position: relative;
+  top: 2rem;
+
 
 }
 
 .ServicesDiv {
   /* width: 50%; */
   position: relative;
-  background-color: #e6e9f1;
+  /* background-color: #6b7dad; */
   top: 5rem;
   margin-left: 3%;
   margin-right: 3%;
 
-  height: 200px;
+  /* height: 200px; */
 
+}
+
+
+.card {
+  /* position: relative; */
+  /* top: 8rem; */
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 10px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+
+  background-color: #e4e6c3;
+
+  color: #14213d;
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.card img {
+  width: 40%;
+  /* height: auto; */
+  height: 33rem;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: 2s;
+}
+
+.card img:hover {
+  transform: scale(1.07, 1.07);
+
+}
+
+.cardContent {
+  overflow: visible;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: left;
+  position: relative;
+  /* left: 10%; */
+  padding: 10px;
+  margin-left: 10rem;
+  /* border: 2px solid black; */
+  max-width: 30rem;
+  min-height: 400px;
+}
+
+.card h3 {
+
+  position: relative;
+  /* text-align: center; */
+  top: 4.5rem;
+  font-size: xxx-large;
+  margin: 1%;
+  letter-spacing: 0.15rem;
+  margin-bottom: 10px;
+  /* font-size: 24px; */
+  color: #14213d;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 18px;
+  color: #14213d;
+  overflow: visible;
+  margin: 1%;
+  font-family: "dm sans", sans-serif;
+  position: relative;
+  top: 5rem;
+  line-height: 1.5;
+
+
+}
+
+.card button {
+  position: relative;
+  top: 7rem;
+  margin: 1%;
+
+  width: 10rem;
+  height: 3rem;
+  /* padding: 2%; */
+  padding: 5px;
+  letter-spacing: 0.05rem;
+  border: none;
+  cursor: pointer;
+  background-color: #f7aa2e;
+  color: #14213d;
+  transition: 1s;
+
+}
+
+.card button:hover {
+  background-color: #b7760d;
+  color: #ffffff;
+}
+
+/* SERVICES ENDS */
+
+
+/* FLOW PROCESS BEGINS */
+
+.FlowProcessSection {
+  border-top: 10px solid black;
+  min-height: 380vh;
+  background-color: #ffffff;
+  color: #2b2d42;
+}
+
+.FlowProcessHeader {
+  text-align: center;
+  position: relative;
+  top: 4rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  margin-bottom: 1%;
+  letter-spacing: 0.15rem;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.FlowProcessDiv {
+  position: relative;
+  top: 8rem;
 }

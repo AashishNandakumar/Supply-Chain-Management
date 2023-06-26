@@ -4,9 +4,45 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Link } from "react-scroll";
 import { useEffect, useState } from "react";
-import CardSlider from "@/public/owl.carousel";
+import SimpleCardSlider from "@/public/CardSlider";
+import FlowIllustration from "@/public/FlowProcess";
 
 export default function Home() {
+  const cardsData = [
+    {
+      title: "Warehouse Services",
+      content:
+        "Fusce eu nisi eget mi ultricies semper vitae id urna. Cras fringilla hendrerit magna, sit.",
+      image:
+        "https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
+    },
+    {
+      title: "Supply Chain Planning",
+      content:
+        "Donec malesuada placerat odio. Morbi sollicitudin nisi ut molestie auctor. Proin eu quam et magna.",
+      image:
+        "https://images.unsplash.com/photo-1608303588026-884930af2559?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=703&q=80",
+    },
+    {
+      title: "Transportation Management ",
+      content:
+        "Sed sit amet interdum lorem. Proin ornare, massa sit amet bibendum imperdiet, magna erat ultricies.",
+      image:
+        "https://images.unsplash.com/photo-1616432043562-3671ea2e5242?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+    },
+  ];
+
+  const Card = ({ image, title, content }) => (
+    <div className={styles.card}>
+      <img src={image} alt={title} />
+      <div className={styles.cardContent}>
+        <h3>{title}</h3>
+        <p>{content}</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+  );
+
   const NavBar = () => {
     return (
       <>
@@ -136,7 +172,33 @@ export default function Home() {
       <>
         <section className={styles.ServicesSection} id="SERVICE">
           <div className={styles.ServicesDiv}>
-            <CardSlider />
+            <h1 id={styles.ServicesHeader}>Services</h1>
+            <div className={styles.ServicesCarouselContainer}>
+              <SimpleCardSlider>
+                {cardsData.map((card, index) => (
+                  <Card
+                    key={index}
+                    image={card.image}
+                    title={card.title}
+                    content={card.content}
+                  />
+                ))}
+              </SimpleCardSlider>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  };
+
+  const FlowProcess = () => {
+    return (
+      <>
+        <section className={styles.FlowProcessSection}>
+          <h1 className={styles.FlowProcessHeader}>Steps</h1>
+          <div className={styles.FlowProcessDiv}>
+            {/* <FlowProcess /> */}
+            <FlowIllustration />
           </div>
         </section>
       </>
@@ -174,6 +236,7 @@ export default function Home() {
         <Intro />
         <Specialities />
         <Services />
+        <FlowProcess />
       </main>
     </>
   );

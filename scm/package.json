@@ -13,6 +13,7 @@
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "jquery": "^3.7.0",
+    "keen-slider": "^6.8.5",
     "next": "13.4.7",
     "owl.carousel": "^2.3.4",
     "react": "18.2.0",
@@ -20,6 +21,8 @@
     "react-card-slider-component": "^1.0.9",
     "react-dom": "18.2.0",
     "react-elastic-carousel": "^0.11.5",
+    "react-flow-renderer": "^10.3.17",
+    "react-icons": "^4.10.1",
     "react-owl-carousel": "^2.3.3",
     "react-responsive-carousel": "^3.2.23",
     "react-scroll": "^1.8.9"

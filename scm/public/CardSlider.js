@@ -1,17 +1,8 @@
-// import React, { useEffect } from "react";
-// const CardSlider = () => {
-//   useEffect(() => {
-//     // Initialize Owl Carousel on component mount
-//     $(".owl-carousel").owlCarousel();
-//   }, []);
+import React from "react";
+import styles from "../styles/CardSlider.module.css";
 
-//   return (
-//     <div className="owl-carousel">
-//       <div className="card">{/* Card Content */}</div>
-//       <div className="card">{/* Card Content */}</div>
-//       <div className="card">{/* Card Content */}</div>
-//     </div>
-//   );
-// };
+const SimpleCardSlider = ({ children }) => {
+  return <div className={styles.slider}>{children}</div>;
+};
 
-// export default CardSlider;
+export default SimpleCardSlider;
