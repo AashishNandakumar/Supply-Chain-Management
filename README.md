@@ -12,11 +12,11 @@ At ChainLink, we believe that a transparent and efficient supply chain is the ba
 
 ## Key Features
 
-- **Transparency**: With FLOW blockchain, every transaction and movement within the supply chain is recorded on an immutable ledger, ensuring complete transparency and traceability from start to finish.
+- **Transparency**: With FLOW blockchain, every transaction and movement within the supply chain is recorded on an immutable ledger, ensuring complete transparency and traceability from start to finish. (Not implemented)
 
 - **Efficiency**: Our NextJS-powered platform provides a user-friendly interface and seamless experience, enabling businesses to optimize their supply chain operations and reduce manual effort.
 
-- **Smart Contracts**: Powered by Cadence, our smart contracts facilitate secure and automated interactions among supply chain participants, ensuring trust and eliminating the need for intermediaries.
+- **Smart Contracts**: Powered by Cadence, our smart contracts facilitate secure and automated interactions among supply chain participants, ensuring trust and eliminating the need for intermediaries. (Not implemented)
 
 - **Real-time Tracking**: Through our platform, businesses can track their products in real-time, gaining valuable insights into inventory management, logistics, and overall supply chain performance.
 
@@ -26,9 +26,9 @@ We take pride in our robust and powerful tech stack, carefully chosen to drive i
 
 - **NextJS**: Our choice of NextJS, a versatile React framework, enables us to build highly performant, scalable, and responsive web applications, providing an immersive experience for our users.
 
-- **FLOW Blockchain**: Leveraging the decentralized architecture of FLOW blockchain, we ensure the security, immutability, and transparency of supply chain data, empowering businesses with trust and confidence.
+- **FLOW Blockchain**: Leveraging the decentralized architecture of FLOW blockchain, we ensure the security, immutability, and transparency of supply chain data, empowering businesses with trust and confidence. (Not implemented)
 
-- **Cadence**: Cadence, the smart contract language developed for FLOW blockchain, allows us to create efficient and secure smart contracts, enabling automated supply chain processes and fostering seamless collaboration.
+- **Cadence**: Cadence, the smart contract language developed for FLOW blockchain, allows us to create efficient and secure smart contracts, enabling automated supply chain processes and fostering seamless collaboration. (Not implemented)
 
 ## Get Started
 
