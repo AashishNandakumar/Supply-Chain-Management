@@ -1,6 +1,6 @@
 # ChainLink
 
-> Backend part is suspended... due to complexities
+> Tried to write the backend in Cadence, but found out to be complex, hence had to suspend it. Will in the future write the backend in Solidity. Currently the frontend is only available
 
 ## Introduction
 
