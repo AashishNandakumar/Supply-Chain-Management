@@ -1,6 +1,6 @@
 # ChainLink
 
-> This Company is still under development, the backend part remains...
+> Backend part is suspended... due to complexities
 
 ## Introduction
 
