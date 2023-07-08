@@ -15,25 +15,52 @@ import { Box } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
+import { Caramel } from "next/font/google";
+import { CONTRACT_ADDRESS, CONTRACT_ABI } from "@/constants";
 
 export default function Home2() {
   // * State variables
   const web3modalRef = useRef();
   const [walletConnected, setWalletConnected] = useState(false);
+  const [loadingScreen, setLoadingScreen] = useState(false);
+  // * Map index to a category
+  const indexToCategory = new Map();
+  indexToCategory.set(0, "suppliers");
+  indexToCategory.set(1, "manufacturers");
+  indexToCategory.set(2, "logistics");
+  indexToCategory.set(3, "wholesalers");
+  indexToCategory.set(4, "retailers");
+  indexToCategory.set(5, "warehouseProviders");
+  indexToCategory.set(6, "serviceProviders");
+  indexToCategory.set(7, "finacialInstitutions");
+  indexToCategory.set(8, "regulatoryBodies");
+  indexToCategory.set(9, "shareHolders");
+  // * Map  index to status
+  const indexToStatus = new Map();
+  indexToStatus.set(0, "initialized");
+  indexToStatus.set(1, "onGoing");
+  indexToStatus.set(2, "delivered");
 
   // * Get a provider or signer object
   const getProviderOrSigner = async (Signer = false) => {
-    const provider = await web3modalRef.current.connect();
-    const web3Provider = new providers.Web3Provider(provider);
+    try {
+      const provider = await web3modalRef.current.connect();
+      const web3Provider = new providers.Web3Provider(provider);
 
-    // * different chainIds for different blockchains
-    const chainId = await web3Provider.getNetwork();
+      // * different chainIds for different blockchains
+      const { chainId } = await web3Provider.getNetwork();
+      if (chainId !== 11155111) {
+        window.alert("please change to sepolia testnet");
+      }
 
-    if (Signer) {
-      const signer = web3Provider.getSigner();
-      return signer;
+      if (Signer) {
+        const signer = web3Provider.getSigner();
+        return signer;
+      }
+      return web3Provider;
+    } catch (E) {
+      console.error(E);
     }
-    return web3Provider;
   };
 
   // * Get a contract instance
@@ -45,10 +72,11 @@ export default function Home2() {
   useEffect(() => {
     if (!walletConnected) {
       web3modalRef.current = new Web3Modal({
-        network: "",
+        network: 11155111,
         providerOptions: {},
         disableInjectedProvider: false,
       });
+      connectWallet();
     }
   }, [walletConnected]);
 
@@ -62,7 +90,42 @@ export default function Home2() {
     }
   };
 
-  // *
+  // * Connect to the contract and invoke the setter method
+  const setData = async (_category, _pid, _status) => {
+    try {
+      const signer = await getProviderOrSigner(true);
+      const contract = getContractInstance(signer);
+
+      const trx = await contract.setProcess(_category, _pid, _status);
+      setLoadingScreen(true);
+      await trx.wait();
+      setLoadingScreen(false);
+    } catch (E) {
+      console.error(E);
+    }
+  };
+
+  // * Connect to the contract and invoke the getter method
+  const getData = async (_category, _pid) => {
+    try {
+      const provider = await getProviderOrSigner();
+      const contract = getContractInstance(provider);
+
+      const trx = await contract.getProcess(_category, _pid);
+
+      const parsedTrx = {
+        // * Category holds now for (ex) Supplier
+        Category: indexToCategory.get(trx.category),
+        Status: indexToStatus.get(trx.status),
+      };
+
+      return parsedTrx;
+    } catch (E) {
+      console.error(E);
+    }
+  };
+
+  // * CHAKRA-UI: Stepper UI
   const steps = [
     { title: "Initialized", description: "Contact Info" },
     { title: "On going", description: "Date & Time" },
@@ -71,10 +134,30 @@ export default function Home2() {
 
   // * Return a process stepper
   const Example = () => {
-    const { activeStep } = useSteps({
-      index: 2,
-      count: steps.length,
-    });
+    const [activeStep, setActiveStep] = useState(null);
+
+    // const { activeStep } = useSteps({
+    //   index: 1,
+    //   count: steps.length,
+    // });
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const parsedTrx = await getData(0, 1);
+          const status =
+            parsedTrx.Status === "initialized"
+              ? 0
+              : parsedTrx.Status === "onGoing"
+              ? 1
+              : 2;
+          setActiveStep(status + 1);
+        } catch (E) {
+          console.error(E);
+        }
+      };
+      fetchData();
+    }, []);
 
     return (
       <Stepper index={activeStep} colorScheme="yellow" size="md">
@@ -105,9 +188,8 @@ export default function Home2() {
       <div>
         <button onClick={connectWallet}>Connect</button>
         <hr />
-        <ChakraProvider>
-          <Example />
 
+        <ChakraProvider>
           <Example />
         </ChakraProvider>
       </div>
