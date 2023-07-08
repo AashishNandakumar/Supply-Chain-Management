@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/FlowIllustration.module.css";
+import Link from "next/link";
 
 const FlowIllustration = () => {
   return (
@@ -15,7 +16,9 @@ const FlowIllustration = () => {
               Vivamus interdum pharetra suscipit. Fusce purus turpis,
               <br /> bibendum a tincidunt a, ullamcorper.
             </p>
-            <button>View Live</button>
+            <Link href="supplierInfo">
+              <button>View Live</button>
+            </Link>
           </div>
         </div>
         <div className={styles.gridItem2}>
