@@ -16,12 +16,15 @@
     "@emotion/styled": "^11.11.0",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
+    "ethers": "^5.7.2",
     "framer-motion": "^10.12.18",
     "keen-slider": "^6.8.5",
     "next": "13.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "wagmi": "^1.3.8",
+    "web3modal": "^1.9.7"
   }
 }
