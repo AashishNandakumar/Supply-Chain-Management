@@ -17,6 +17,7 @@ import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { Caramel } from "next/font/google";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "@/constants";
+import styles from "../styles/SupplierInfoIllustration.module.css";
 
 export default function Home2() {
   // * State variables
@@ -40,6 +41,10 @@ export default function Home2() {
   indexToStatus.set(0, "initialized");
   indexToStatus.set(1, "onGoing");
   indexToStatus.set(2, "delivered");
+  // *
+  const [parsedTrxs, setParsedTrxs] = useState({});
+  // *
+  const [activeStep, setActiveStep] = useState(null);
 
   // * Get a provider or signer object
   const getProviderOrSigner = async (Signer = false) => {
@@ -128,23 +133,24 @@ export default function Home2() {
   // * CHAKRA-UI: Stepper UI
   const steps = [
     { title: "Initialized", description: "Contact Info" },
-    { title: "On going", description: "Date & Time" },
+    { title: "In Process", description: "Date & Time" },
     { title: "Delivered", description: "Select Rooms" },
   ];
 
   // * Return a process stepper
   const Example = () => {
-    const [activeStep, setActiveStep] = useState(null);
-
     // const { activeStep } = useSteps({
     //   index: 1,
     //   count: steps.length,
     // });
 
+    // * This runs every time the page reloads
     useEffect(() => {
       const fetchData = async () => {
         try {
           const parsedTrx = await getData(0, 1);
+          setParsedTrxs(parsedTrx);
+          // console.log(parsedTrxs);
           const status =
             parsedTrx.Status === "initialized"
               ? 0
@@ -160,7 +166,7 @@ export default function Home2() {
     }, []);
 
     return (
-      <Stepper index={activeStep} colorScheme="yellow" size="md">
+      <Stepper index={activeStep} colorScheme="red" size="lg">
         {steps.map((step, index) => (
           <Step key={index}>
             <StepIndicator>
@@ -186,11 +192,19 @@ export default function Home2() {
   return (
     <>
       <div>
-        <button onClick={connectWallet}>Connect</button>
-        <hr />
-
         <ChakraProvider>
-          <Example />
+          <section id={styles.stepperSection}>
+            <h1>PROCESS ID - 1</h1>
+            <Example />
+            <div id={styles.stepperButtonDiv}>
+              <div>
+                <button>More details</button>
+              </div>
+              <div>
+                <button>Update</button>
+              </div>
+            </div>
+          </section>
         </ChakraProvider>
       </div>
     </>
