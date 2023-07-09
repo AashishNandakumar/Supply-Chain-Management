@@ -52,6 +52,41 @@
 }
 
 #stepperSection button:hover {
-    background-color: #9f1a25;
+    background-color: #bd7b11;
     color: #ffffff;
+}
+
+#StatusChangeSection {
+    /* border: 2px solid white; */
+    padding: 15px;
+
+}
+
+#StatusChangeSection select {
+    background-color: #fefae0;
+    border: none;
+    width: 8em;
+    cursor: pointer;
+    color: #606c38;
+    border-radius: 30px;
+    height: 30px;
+}
+
+#StatusChangeSection #StatusChangeDiv {
+    margin: 0.2em 0;
+}
+
+#StatusChangeSection button {
+    background-color: #457b9d;
+    color: #f1faee;
+    height: 2.2em;
+    width: 7rem;
+    margin: 1em 0;
+    position: relative;
+    top: 0.6em;
+
+}
+
+#StatusChangeSection button:hover {
+    background-color: #295c7c;
 }

@@ -41,10 +41,15 @@ export default function Home2() {
   indexToStatus.set(0, "initialized");
   indexToStatus.set(1, "onGoing");
   indexToStatus.set(2, "delivered");
-  // *
+  // * Save the parsed transactions
   const [parsedTrxs, setParsedTrxs] = useState({});
-  // *
+  // * Save which step our process is in
   const [activeStep, setActiveStep] = useState(null);
+  // * Record the selected value of the "select" element
+  const [selectedValue, setSelectedValue] = useState("");
+  // * Choose whether to display status change options or not
+  const [displayStatusChangeOptions, setdisplayStatusChangeOptions] =
+    useState(false);
 
   // * Get a provider or signer object
   const getProviderOrSigner = async (Signer = false) => {
@@ -108,6 +113,10 @@ export default function Home2() {
     } catch (E) {
       console.error(E);
     }
+  };
+
+  const setDataHelper = () => {
+    setdisplayStatusChangeOptions(true);
   };
 
   // * Connect to the contract and invoke the getter method
@@ -201,7 +210,39 @@ export default function Home2() {
                 <button>More details</button>
               </div>
               <div>
-                <button>Update</button>
+                {displayStatusChangeOptions ? (
+                  <section id={styles.StatusChangeSection}>
+                    <form>
+                      <label htmlFor="processSelect">
+                        Choose process status:&emsp;
+                      </label>
+                      <select
+                        id="processSelect"
+                        value={selectedValue}
+                        onChange={(e) => setSelectedValue(e.target.value)}
+                      >
+                        <option selected></option>
+                        <option value="0">Initialized</option>
+                        <option value="1">In Process</option>
+                        <option value="2">Delivered</option>
+                      </select>
+                      <br />
+                      <div id={styles.StatusChangeDiv}>
+                        <button
+                          onClick={async () =>
+                            await setData(0, 1, selectedValue)
+                          }
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </form>
+                  </section>
+                ) : loadingScreen ? (
+                  <p>Loading...</p>
+                ) : (
+                  <button onClick={setDataHelper}>Update</button>
+                )}
               </div>
             </div>
           </section>
