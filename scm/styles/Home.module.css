@@ -187,20 +187,20 @@
   margin: 3% 0 0 0;
   letter-spacing: 0.1rem;
   font-size: small;
-
+  margin-left: 0.3em;
 }
 
 #H1 {
   margin: 1% 0 0 0;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.10rem;
   font-size: xxx-large;
 
-  background: linear-gradient(45deg, #f72585 10%, #ffba08 50%, #8338ec 40%);
+  /* background: linear-gradient(45deg, #f72585 10%, #ffba08 50%, #8338ec 40%);
   padding: 4px;
   color: #fff;
   -webkit-background-clip: text;
-  -webkit-text-stroke: 6px transparent;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  -webkit-text-stroke: 6px transparent; */
+  font-family: 'Montserrat', sans-serif;
 }
 
 #intro2 {
@@ -212,8 +212,10 @@
 #intorPara {
   /* background-color: antiquewhite; */
   margin: 2% 0 0 0;
+  font-family: 'Montserrat', sans-serif;
 
   width: 90%;
+  line-height: 1.5;
 }
 
 #introBtn {
@@ -722,10 +724,11 @@
 
 #FormAnchor {
   text-decoration: underline;
+  transition: 0.5s;
 }
 
 #FormAnchor:hover {
-  color: #9f1a25;
+  color: #a32d2d;
 }
 
 

@@ -8,6 +8,11 @@ import SimpleCardSlider from "@/public/CardSlider";
 import FlowIllustration from "@/public/FlowProcess";
 
 export default function Home() {
+  const Message = () => {
+    window.alert(
+      "Sorry, we are working on some developments 😓 , please come back later"
+    );
+  };
   const cardsData = [
     {
       title: "Warehouse Services",
@@ -38,7 +43,7 @@ export default function Home() {
       <div className={styles.cardContent}>
         <h3>{title}</h3>
         <p>{content}</p>
-        <button>Learn More</button>
+        <button onClick={Message}>Learn More</button>
       </div>
     </div>
   );
@@ -127,7 +132,9 @@ export default function Home() {
               <br />
               driving efficiency and transparency
             </p>
-            <button id={styles.introBtn}>READ MORE</button>
+            <button id={styles.introBtn} onClick={Message}>
+              READ MORE
+            </button>
           </div>
           {/* Modificaions */}
         </section>
@@ -178,7 +185,9 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.SpecialitesDivBtn}>
-            <button id={styles.SpecialitesBtn}>MORE</button>
+            <button id={styles.SpecialitesBtn} onClick={Message}>
+              MORE
+            </button>
           </div>
         </section>
       </>
@@ -318,6 +327,10 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
       <main className={styles.body}>
         <div className={styles.banner}>

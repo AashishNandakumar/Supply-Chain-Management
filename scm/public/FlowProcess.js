@@ -3,6 +3,11 @@ import styles from "../styles/FlowIllustration.module.css";
 import Link from "next/link";
 
 const FlowIllustration = () => {
+  const Message = () => {
+    window.alert(
+      "Sorry, we are working on some developments 😓 , please come back later"
+    );
+  };
   return (
     <>
       <section className={styles.gridContainer}>
@@ -31,7 +36,7 @@ const FlowIllustration = () => {
               Suspendisse ut lacus id libero egestas lobortis et ut erat.
               <br /> Donec viverra.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem3}>
@@ -44,7 +49,7 @@ const FlowIllustration = () => {
               Nam maximus ut nisl in porttitor. Curabitur id nibh justo.
               <br /> Duis eget.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem4}>
@@ -57,7 +62,7 @@ const FlowIllustration = () => {
               Praesent nec enim sit amet risus cursus sagittis venenatis <br />a
               nibh. Mauris.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem5}>
@@ -70,7 +75,7 @@ const FlowIllustration = () => {
               Cras tempor, odio non sodales commodo, turpis magna <br />
               commodo arcu, nec pretium.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem6}>
@@ -83,7 +88,7 @@ const FlowIllustration = () => {
               Praesent nec enim sit amet risus cursus sagittis venenatis <br />a
               nibh. Mauris.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem7}>
@@ -96,7 +101,7 @@ const FlowIllustration = () => {
               Praesent nec enim sit amet risus cursus sagittis venenatis <br />a
               nibh. Mauris.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem8}>
@@ -109,7 +114,7 @@ const FlowIllustration = () => {
               Praesent nec enim sit amet risus cursus sagittis venenatis <br />a
               nibh. Mauris.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem9}>
@@ -122,7 +127,7 @@ const FlowIllustration = () => {
               Praesent nec enim sit amet risus cursus sagittis venenatis <br />a
               nibh. Mauris.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
         <div className={styles.gridItem10}>
@@ -135,7 +140,7 @@ const FlowIllustration = () => {
               Duis commodo massa ornare ex tempor lacinia. Nam <br />
               maximus eget eros quis.
             </p>
-            <button>View Live</button>
+            <button onClick={Message}>View Live</button>
           </div>
         </div>
       </section>
