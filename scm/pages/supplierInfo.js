@@ -1,4 +1,4 @@
-import { ChakraProvider, border } from "@chakra-ui/react";
+import { ChakraProvider, Select, border } from "@chakra-ui/react";
 import {
   Step,
   StepDescription,
@@ -18,6 +18,7 @@ import { providers, Contract } from "ethers";
 import { Caramel } from "next/font/google";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "@/constants";
 import styles from "../styles/SupplierInfoIllustration.module.css";
+import Head from "next/head";
 
 export default function Home2() {
   // * State variables
@@ -50,7 +51,25 @@ export default function Home2() {
   // * Choose whether to display status change options or not
   const [displayStatusChangeOptions, setdisplayStatusChangeOptions] =
     useState(false);
+  // *
+  const [ContributeRequested, setContributeRequested] = useState(false);
+  // *
+  const [processName, setProcessName] = useState("");
+  const [nameOfCreator, setNameOfCreator] = useState("");
 
+  // *
+  const [processes, setProcesses] = useState([]);
+  useEffect(() => {
+    const fetchProcesses = async () => {
+      const fetchedProcesses = await getAllProcesses();
+      setProcesses(fetchProcesses);
+    };
+    fetchProcesses();
+  }, []);
+  const [pidNo, setPidNo] = useState(0);
+  //
+  //
+  //
   // * Get a provider or signer object
   const getProviderOrSigner = async (Signer = false) => {
     try {
@@ -101,17 +120,52 @@ export default function Home2() {
   };
 
   // * Connect to the contract and invoke the setter method
-  const setData = async (_category, _pid, _status) => {
+  // const setData = async (
+  //   _processName,
+  //   _nameOfCreator,
+  //   _pid,
+  //   _category,
+  //   _status,
+  //   _update
+  // ) => {
+  //   try {
+  //     const signer = await getProviderOrSigner(true);
+  //     const contract = getContractInstance(signer);
+
+  //     const trx = await contract.setProcess(
+  //       _processName,
+  //       _nameOfCreator,
+  //       _pid,
+  //       _category,
+  //       _status,
+  //       _update
+  //     );
+  //     setLoadingScreen(true);
+  //     await trx.wait();
+  //     setLoadingScreen(false);
+  //   } catch (E) {
+  //     console.error(E);
+  //   }
+  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const signer = await getProviderOrSigner(true);
       const contract = getContractInstance(signer);
 
-      const trx = await contract.setProcess(_category, _pid, _status);
+      const trx = await contract.setProcess(
+        processName,
+        nameOfCreator,
+        0,
+        0,
+        0,
+        true
+      );
       setLoadingScreen(true);
       await trx.wait();
       setLoadingScreen(false);
-    } catch (E) {
-      console.error(E);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -128,6 +182,12 @@ export default function Home2() {
       const trx = await contract.getProcess(_category, _pid);
 
       const parsedTrx = {
+        processName: trx.processName,
+        nameOfCreator: trx.nameOfCreator,
+        addressOfCreator: trx.addressOfCreator,
+        pid: trx.pid,
+        processTime: new Date(parseInt(trx.processTime.toString()) * 1000)
+          .toLocaleString,
         // * Category holds now for (ex) Supplier
         Category: indexToCategory.get(trx.category),
         Status: indexToStatus.get(trx.status),
@@ -136,6 +196,39 @@ export default function Home2() {
       return parsedTrx;
     } catch (E) {
       console.error(E);
+    }
+  };
+  // *
+  const getAllProcesses = async () => {
+    try {
+      const provider = await getProviderOrSigner();
+      const contract = getContractInstance(provider);
+
+      const noOfProcessIds = await contract.getNoOfProcessIds();
+
+      const processes = [];
+
+      for (let i = 0; i < noOfProcessIds; i++) {
+        const process = await contract.getProcess(0, i);
+
+        const parsedProcess = {
+          processName: process.processName,
+          nameOfCreator: process.nameOfCreator,
+          addressOfCreator: process.addressOfCreator,
+          pid: process.pid,
+          processTime: new Date(
+            parseInt(process.processTime.toString()) * 1000
+          ).toLocaleString(),
+          Category: indexToCategory.get(process.category),
+          Status: indexToStatus.get(process.status),
+        };
+
+        processes.push(parsedProcess);
+      }
+
+      return processes;
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -157,7 +250,7 @@ export default function Home2() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const parsedTrx = await getData(0, 1);
+          const parsedTrx = await getData(0, pidNo);
           setParsedTrxs(parsedTrx);
           // console.log(parsedTrxs);
           const status =
@@ -198,56 +291,74 @@ export default function Home2() {
     );
   };
 
+  const Contribute = () => {
+    setContributeRequested(true);
+  };
+
   return (
-    <>
+    <section className={styles.page}>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap"
+          rel="stylesheet"
+        ></link>
+      </Head>
       <div>
+        <section className={styles.suppliersHeaderSection}>
+          <h1>Welcome to Suppliers Market</h1>
+          <h2>Join us in this amazing decentralized world of suppliers!</h2>
+          <h2>Start Contributing today.</h2>
+          {
+            <div>
+              {ContributeRequested ? (
+                <section id={styles.ContributeSection}>
+                  <form
+                    onSubmit={handleSubmit}
+                    className={styles.ContributeForm}
+                  >
+                    <div>
+                      <input
+                        placeholder="Description"
+                        type="text"
+                        value={processName}
+                        onChange={(e) => setProcessName(e.target.value)}
+                      />
+
+                      <input
+                        placeholder="Name of Creator"
+                        type="text"
+                        value={nameOfCreator}
+                        onChange={(e) => setNameOfCreator(e.target.value)}
+                      />
+                    </div>
+
+                    <button type="submit">Submit</button>
+                  </form>
+                </section>
+              ) : (
+                <button onClick={Contribute}>Contribute</button>
+              )}
+            </div>
+          }
+          {/* <button>Contribute</button> */}
+        </section>
         <ChakraProvider>
           <section id={styles.stepperSection}>
-            <h1>PROCESS ID - 1</h1>
-            <Example />
-            <div id={styles.stepperButtonDiv}>
-              <div>
-                <button>More details</button>
+            {processes.map((process) => (
+              <div key={process.pid}>
+                {setPidNo(process.id)}
+                <h1>Process Id - {process.id}</h1>
+                <Example />
+                <div id={styles.stepperButtonDiv}>
+                  <div>
+                    <button>More details</button>
+                  </div>
+                </div>
               </div>
-              <div>
-                {displayStatusChangeOptions ? (
-                  <section id={styles.StatusChangeSection}>
-                    <form>
-                      <label htmlFor="processSelect">
-                        Choose process status:&emsp;
-                      </label>
-                      <select
-                        id="processSelect"
-                        value={selectedValue}
-                        onChange={(e) => setSelectedValue(e.target.value)}
-                      >
-                        <option selected></option>
-                        <option value="0">Initialized</option>
-                        <option value="1">In Process</option>
-                        <option value="2">Delivered</option>
-                      </select>
-                      <br />
-                      <div id={styles.StatusChangeDiv}>
-                        <button
-                          onClick={async () =>
-                            await setData(0, 1, selectedValue)
-                          }
-                        >
-                          Update
-                        </button>
-                      </div>
-                    </form>
-                  </section>
-                ) : loadingScreen ? (
-                  <p>Loading...</p>
-                ) : (
-                  <button onClick={setDataHelper}>Update</button>
-                )}
-              </div>
-            </div>
+            ))}
           </section>
         </ChakraProvider>
       </div>
-    </>
+    </section>
   );
 }

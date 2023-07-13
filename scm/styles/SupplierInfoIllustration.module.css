@@ -1,3 +1,8 @@
+.page {
+    margin: 0px;
+    background-color: #edf6f9;
+}
+
 #stepperSection {
     /* border: 2px solid black; */
     background-color: #14213d;
@@ -56,37 +61,72 @@
     color: #ffffff;
 }
 
-#StatusChangeSection {
+#ContributeSection {
     /* border: 2px solid white; */
     padding: 15px;
 
 }
 
-#StatusChangeSection select {
-    background-color: #fefae0;
+
+.suppliersHeaderSection {
+    text-align: center;
+    /* padding: 15px; */
+    font-family: 'Montserrat', sans-serif;
+    /* border: 10px solid; */
+}
+
+.suppliersHeaderSection h1 {
+    font-size: xx-large;
+    background-color: #83c5be;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.suppliersHeaderSection h2 {
+    font-size: x-large;
+    /* text-decoration: underline; */
+    margin-top: 0.5em;
+}
+
+.suppliersHeaderSection h2:nth-of-type(2) {
+    font-size: x-large;
+    text-decoration: underline;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.suppliersHeaderSection button {
+    margin-top: 1.2em;
+    margin-bottom: 2.5em;
+    width: 11rem;
+    height: 2.9rem;
+    padding: 5px;
+    letter-spacing: 0.05rem;
+    font-weight: 100;
     border: none;
-    width: 8em;
     cursor: pointer;
-    color: #606c38;
-    border-radius: 30px;
-    height: 30px;
+    background-color: #ef233c;
+    color: #fefae0;
+    border-radius: 2em;
+    transition: 1s;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#StatusChangeSection #StatusChangeDiv {
-    margin: 0.2em 0;
-}
+.suppliersHeaderSection button:hover {
 
-#StatusChangeSection button {
-    background-color: #457b9d;
-    color: #f1faee;
-    height: 2.2em;
-    width: 7rem;
-    margin: 1em 0;
-    position: relative;
-    top: 0.6em;
+    background-color: #ab0521;
 
 }
 
-#StatusChangeSection button:hover {
-    background-color: #295c7c;
+.ContributeForm div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1.2em;
+    align-items: center;
+}
+
+.ContributeForm div input {
+    padding: 10px;
+    border-radius: 2em;
 }
