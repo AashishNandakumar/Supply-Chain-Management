@@ -1,27 +1,17 @@
-export const CONTRACT_ADDRESS = "0x987d957b63D05761618478644EC6ede1D84DfC6C";
+export const CONTRACT_ADDRESS = "0x42b839fb44e1acB6fBB995d44BDd0142a9ab538C";
 
 export const CONTRACT_ABI = [
   {
-    inputs: [
-      {
-        internalType: "enum SCM.Category",
-        name: "_category",
-        type: "uint8",
-      },
+    inputs: [],
+    name: "getNoOfProcessIds",
+    outputs: [
       {
         internalType: "uint256",
-        name: "_pid",
+        name: "",
         type: "uint256",
       },
-      {
-        internalType: "enum SCM.State",
-        name: "_status",
-        type: "uint8",
-      },
     ],
-    name: "setProcess",
-    outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -33,7 +23,7 @@ export const CONTRACT_ABI = [
       },
       {
         internalType: "uint256",
-        name: "_pid",
+        name: "_processId",
         type: "uint256",
       },
     ],
@@ -41,6 +31,31 @@ export const CONTRACT_ABI = [
     outputs: [
       {
         components: [
+          {
+            internalType: "string",
+            name: "processName",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "nameOfCreator",
+            type: "string",
+          },
+          {
+            internalType: "address",
+            name: "addressOfCreator",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "pid",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "processTime",
+            type: "uint256",
+          },
           {
             internalType: "enum SCM.Category",
             name: "category",
@@ -58,6 +73,44 @@ export const CONTRACT_ABI = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_processName",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_nameOfCreator",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_pid",
+        type: "uint256",
+      },
+      {
+        internalType: "enum SCM.Category",
+        name: "_category",
+        type: "uint8",
+      },
+      {
+        internalType: "enum SCM.State",
+        name: "_status",
+        type: "uint8",
+      },
+      {
+        internalType: "bool",
+        name: "_update",
+        type: "bool",
+      },
+    ],
+    name: "setProcess",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
 ];

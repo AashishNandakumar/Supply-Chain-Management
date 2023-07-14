@@ -15,14 +15,13 @@ import { Box } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
-import { Caramel } from "next/font/google";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "@/constants";
 import styles from "../styles/SupplierInfoIllustration.module.css";
 import Head from "next/head";
 
 export default function Home2() {
   // * State variables
-  const web3modalRef = useRef();
+  const web3modalRef = useRef(null);
   const [walletConnected, setWalletConnected] = useState(false);
   const [loadingScreen, setLoadingScreen] = useState(false);
   // * Map index to a category
@@ -59,10 +58,14 @@ export default function Home2() {
 
   // *
   const [processes, setProcesses] = useState([]);
+
   useEffect(() => {
     const fetchProcesses = async () => {
       const fetchedProcesses = await getAllProcesses();
-      setProcesses(fetchProcesses);
+      // console.log(fetchedProcesses);
+      if (!Array.isArray(fetchedProcesses)) console.log("Not an array!");
+      else setProcesses([...fetchedProcesses]);
+      console.log(processes);
     };
     fetchProcesses();
   }, []);
@@ -73,7 +76,8 @@ export default function Home2() {
   // * Get a provider or signer object
   const getProviderOrSigner = async (Signer = false) => {
     try {
-      const provider = await web3modalRef.current.connect();
+      const provider =
+        web3modalRef.current && (await web3modalRef.current.connect());
       const web3Provider = new providers.Web3Provider(provider);
 
       // * different chainIds for different blockchains
@@ -159,7 +163,7 @@ export default function Home2() {
         0,
         0,
         0,
-        true
+        false // !
       );
       setLoadingScreen(true);
       await trx.wait();
@@ -169,9 +173,9 @@ export default function Home2() {
     }
   };
 
-  const setDataHelper = () => {
-    setdisplayStatusChangeOptions(true);
-  };
+  // const setDataHelper = () => {
+  //   setdisplayStatusChangeOptions(true);
+  // };
 
   // * Connect to the contract and invoke the getter method
   const getData = async (_category, _pid) => {
@@ -204,29 +208,31 @@ export default function Home2() {
       const provider = await getProviderOrSigner();
       const contract = getContractInstance(provider);
 
-      const noOfProcessIds = await contract.getNoOfProcessIds();
-
-      const processes = [];
-
+      // returning a bignumber
+      const noOfProcessIdsBigNumber = await contract.getNoOfProcessIds();
+      // convert to an integer
+      const noOfProcessIds = noOfProcessIdsBigNumber.toNumber();
+      const processes1 = [];
+      console.log(noOfProcessIds);
       for (let i = 0; i < noOfProcessIds; i++) {
         const process = await contract.getProcess(0, i);
-
+        // console.log(process);
         const parsedProcess = {
           processName: process.processName,
           nameOfCreator: process.nameOfCreator,
           addressOfCreator: process.addressOfCreator,
-          pid: process.pid,
+          pid: process.pid.toNumber(),
           processTime: new Date(
             parseInt(process.processTime.toString()) * 1000
           ).toLocaleString(),
           Category: indexToCategory.get(process.category),
           Status: indexToStatus.get(process.status),
         };
-
-        processes.push(parsedProcess);
+        // console.log(parsedProcess);
+        processes1.push(parsedProcess);
       }
-
-      return processes;
+      // console.log(processes1);
+      return processes1;
     } catch (error) {
       console.error(error);
     }
@@ -234,9 +240,9 @@ export default function Home2() {
 
   // * CHAKRA-UI: Stepper UI
   const steps = [
-    { title: "Initialized", description: "Contact Info" },
-    { title: "In Process", description: "Date & Time" },
-    { title: "Delivered", description: "Select Rooms" },
+    { title: "Initialized", description: "Initiated successfully" },
+    { title: "In Process", description: "Currently in progress" },
+    { title: "Delivered", description: "Completed and delivered" },
   ];
 
   // * Return a process stepper
@@ -250,7 +256,7 @@ export default function Home2() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const parsedTrx = await getData(0, pidNo);
+          const parsedTrx = await getData(0, pidNo + 1);
           setParsedTrxs(parsedTrx);
           // console.log(parsedTrxs);
           const status =
@@ -295,6 +301,9 @@ export default function Home2() {
     setContributeRequested(true);
   };
 
+  const handleClick = (pid) => {
+    setPidNo(pid);
+  };
   return (
     <section className={styles.page}>
       <Head>
@@ -344,14 +353,17 @@ export default function Home2() {
         </section>
         <ChakraProvider>
           <section id={styles.stepperSection}>
+            {/* {console.log(processes)} */}
             {processes.map((process) => (
               <div key={process.pid}>
-                {setPidNo(process.id)}
-                <h1>Process Id - {process.id}</h1>
+                {/* {setPidNo(process.pid)} */}
+                <h1>Process Id - {process.pid}</h1>
                 <Example />
                 <div id={styles.stepperButtonDiv}>
                   <div>
-                    <button>More details</button>
+                    <button onClick={() => handleClick(process.pid)}>
+                      More details
+                    </button>
                   </div>
                 </div>
               </div>
