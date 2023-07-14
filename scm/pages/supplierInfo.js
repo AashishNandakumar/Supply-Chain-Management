@@ -42,7 +42,7 @@ export default function Home2() {
   indexToStatus.set(1, "onGoing");
   indexToStatus.set(2, "delivered");
   // * Save the parsed transactions
-  const [parsedTrxs, setParsedTrxs] = useState({});
+  const [parsedTrxs, setParsedTrxs] = useState([]); //!
   // * Save which step our process is in
   const [activeStep, setActiveStep] = useState(null);
   // * Record the selected value of the "select" element
@@ -64,12 +64,22 @@ export default function Home2() {
       const fetchedProcesses = await getAllProcesses();
       // console.log(fetchedProcesses);
       if (!Array.isArray(fetchedProcesses)) console.log("Not an array!");
+      // else setProcesses(fetchProcesses);
       else setProcesses([...fetchedProcesses]);
-      console.log(processes);
+
+      // console.log(processes);
     };
     fetchProcesses();
   }, []);
+
+  useEffect(() => {
+    console.log(processes);
+  }, [processes]);
+
+  // *
   const [pidNo, setPidNo] = useState(0);
+  const [GenerateDescriptionSelected, setGenerateDescriptionSelected] =
+    useState(false);
   //
   //
   //
@@ -196,7 +206,7 @@ export default function Home2() {
         Category: indexToCategory.get(trx.category),
         Status: indexToStatus.get(trx.status),
       };
-
+      console.log(parsedTrx);
       return parsedTrx;
     } catch (E) {
       console.error(E);
@@ -216,7 +226,7 @@ export default function Home2() {
       console.log(noOfProcessIds);
       for (let i = 0; i < noOfProcessIds; i++) {
         const process = await contract.getProcess(0, i);
-        // console.log(process);
+        console.log(process);
         const parsedProcess = {
           processName: process.processName,
           nameOfCreator: process.nameOfCreator,
@@ -228,7 +238,7 @@ export default function Home2() {
           Category: indexToCategory.get(process.category),
           Status: indexToStatus.get(process.status),
         };
-        // console.log(parsedProcess);
+        console.log(parsedProcess);
         processes1.push(parsedProcess);
       }
       // console.log(processes1);
@@ -246,19 +256,16 @@ export default function Home2() {
   ];
 
   // * Return a process stepper
-  const Example = () => {
-    // const { activeStep } = useSteps({
-    //   index: 1,
-    //   count: steps.length,
-    // });
 
-    // * This runs every time the page reloads
+  const Example = ({ processes }) => {
+    const [parsedTrxs, setParsedTrxs] = useState([]);
+    const [activeStep, setActiveStep] = useState(0);
+
     useEffect(() => {
-      const fetchData = async () => {
+      const fetchData = async (processId) => {
         try {
-          const parsedTrx = await getData(0, pidNo + 1);
+          const parsedTrx = await getData(0, processId);
           setParsedTrxs(parsedTrx);
-          // console.log(parsedTrxs);
           const status =
             parsedTrx.Status === "initialized"
               ? 0
@@ -270,8 +277,12 @@ export default function Home2() {
           console.error(E);
         }
       };
-      fetchData();
-    }, []);
+
+      // Fetch data for each process
+      processes.forEach((process) => {
+        fetchData(process.pid);
+      });
+    }, [processes]);
 
     return (
       <Stepper index={activeStep} colorScheme="red" size="lg">
@@ -301,9 +312,13 @@ export default function Home2() {
     setContributeRequested(true);
   };
 
-  const handleClick = (pid) => {
-    setPidNo(pid);
+  // const handleClick = (pid) => {
+  //   setPidNo(pid);
+  // };
+  const GenerateDescription = () => {
+    setGenerateDescriptionSelected(true);
   };
+
   return (
     <section className={styles.page}>
       <Head>
@@ -341,11 +356,15 @@ export default function Home2() {
                       />
                     </div>
 
-                    <button type="submit">Submit</button>
+                    <button id={styles.StepperBtn1} type="submit">
+                      Submit
+                    </button>
                   </form>
                 </section>
               ) : (
-                <button onClick={Contribute}>Contribute</button>
+                <button id={styles.StepperBtn2} onClick={Contribute}>
+                  Contribute
+                </button>
               )}
             </div>
           }
@@ -355,17 +374,64 @@ export default function Home2() {
           <section id={styles.stepperSection}>
             {/* {console.log(processes)} */}
             {processes.map((process) => (
-              <div key={process.pid}>
+              <div key={process.pid} id={styles.stepperSectionDiv}>
+                {/* {fetchData(process.pid)} */}
+
                 {/* {setPidNo(process.pid)} */}
                 <h1>Process Id - {process.pid}</h1>
-                <Example />
-                <div id={styles.stepperButtonDiv}>
-                  <div>
-                    <button onClick={() => handleClick(process.pid)}>
-                      More details
-                    </button>
-                  </div>
+                <Example processes={[process]} />
+                {/* <div id={styles.stepperButtonDiv}> */}
+                <div>
+                  {GenerateDescriptionSelected ? (
+                    <section className={styles.GenerateDescriptionSection}>
+                      <div>
+                        <p>Category:&emsp; {process.Category}</p>
+                        <p>Pid:&emsp; {process.pid}</p>
+
+                        <p>Status:&emsp; {process.Status}</p>
+                      </div>
+                      <div>
+                        <p>Name of Creator:&emsp; {process.nameOfCreator}</p>
+                        <p>Process name:&emsp; {process.processName}</p>
+                      </div>
+                      <div>
+                        <p>
+                          Address of creator:&emsp; {process.addressOfCreator}
+                        </p>
+                      </div>
+
+                      <div>
+                        <p>Time mark:&emsp; {process.processTime}</p>
+                      </div>
+                    </section>
+                  ) : (
+                    <div id={styles.stepperSectionDivBtn}>
+                      <button onClick={() => GenerateDescription(process)}>
+                        More details
+                      </button>
+                    </div>
+                  )}
+                  {/* <section className={styles.GenerateDescriptionSection}>
+                    <div>
+                      <p>Category: {process.Category}</p>
+                      <p>Status: {process.Status}</p>
+                    </div>
+                    <div>
+                      <p>Address of creator: {process.addressOfCreator}</p>
+                    </div>
+                    <div>
+                      <p>Name of Creator: {process.nameOfCreator}</p>
+                    </div>
+                    <div>
+                      <p>Pid: {process.pid}</p>
+                      <p>Process name: {process.processName}</p>
+                    </div>
+                    <div>
+                      <p>Time mark: {process.processTime}</p>
+                    </div>
+                  </section> */}
                 </div>
+                {/* </div> */}
               </div>
             ))}
           </section>
