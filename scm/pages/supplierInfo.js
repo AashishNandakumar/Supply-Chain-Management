@@ -55,19 +55,16 @@ export default function Home2() {
   // *
   const [processName, setProcessName] = useState("");
   const [nameOfCreator, setNameOfCreator] = useState("");
-
+  const [update, setUpdate] = useState(false);
+  const [status, setStatus] = useState(0);
   // *
   const [processes, setProcesses] = useState([]);
 
   useEffect(() => {
     const fetchProcesses = async () => {
       const fetchedProcesses = await getAllProcesses();
-      // console.log(fetchedProcesses);
       if (!Array.isArray(fetchedProcesses)) console.log("Not an array!");
-      // else setProcesses(fetchProcesses);
       else setProcesses([...fetchedProcesses]);
-
-      // console.log(processes);
     };
     fetchProcesses();
   }, []);
@@ -134,33 +131,7 @@ export default function Home2() {
   };
 
   // * Connect to the contract and invoke the setter method
-  // const setData = async (
-  //   _processName,
-  //   _nameOfCreator,
-  //   _pid,
-  //   _category,
-  //   _status,
-  //   _update
-  // ) => {
-  //   try {
-  //     const signer = await getProviderOrSigner(true);
-  //     const contract = getContractInstance(signer);
 
-  //     const trx = await contract.setProcess(
-  //       _processName,
-  //       _nameOfCreator,
-  //       _pid,
-  //       _category,
-  //       _status,
-  //       _update
-  //     );
-  //     setLoadingScreen(true);
-  //     await trx.wait();
-  //     setLoadingScreen(false);
-  //   } catch (E) {
-  //     console.error(E);
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -170,10 +141,10 @@ export default function Home2() {
       const trx = await contract.setProcess(
         processName,
         nameOfCreator,
+        pidNo,
         0,
-        0,
-        0,
-        false // !
+        status,
+        update
       );
       setLoadingScreen(true);
       await trx.wait();
@@ -182,10 +153,6 @@ export default function Home2() {
       console.error(error);
     }
   };
-
-  // const setDataHelper = () => {
-  //   setdisplayStatusChangeOptions(true);
-  // };
 
   // * Connect to the contract and invoke the getter method
   const getData = async (_category, _pid) => {
@@ -312,9 +279,6 @@ export default function Home2() {
     setContributeRequested(true);
   };
 
-  // const handleClick = (pid) => {
-  //   setPidNo(pid);
-  // };
   const GenerateDescription = () => {
     setGenerateDescriptionSelected(true);
   };
@@ -355,6 +319,29 @@ export default function Home2() {
                         onChange={(e) => setNameOfCreator(e.target.value)}
                       />
                     </div>
+                    <div>
+                      <input
+                        placeholder="Pid"
+                        type="number"
+                        value={pidNo}
+                        onChange={(e) => setPidNo(e.target.value)}
+                      />
+
+                      <input
+                        placeholder="Update(true/false)"
+                        type="text"
+                        value={update}
+                        onChange={(e) => setUpdate(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <input
+                        placeholder="Status(0,1,2)"
+                        type="number"
+                        value={status}
+                        onChange={(e) => setStatus(e.target.value)}
+                      />
+                    </div>
 
                     <button id={styles.StepperBtn1} type="submit">
                       Submit
@@ -368,19 +355,13 @@ export default function Home2() {
               )}
             </div>
           }
-          {/* <button>Contribute</button> */}
         </section>
         <ChakraProvider>
           <section id={styles.stepperSection}>
-            {/* {console.log(processes)} */}
             {processes.map((process) => (
               <div key={process.pid} id={styles.stepperSectionDiv}>
-                {/* {fetchData(process.pid)} */}
-
-                {/* {setPidNo(process.pid)} */}
                 <h1>Process Id - {process.pid}</h1>
                 <Example processes={[process]} />
-                {/* <div id={styles.stepperButtonDiv}> */}
                 <div>
                   {GenerateDescriptionSelected ? (
                     <section className={styles.GenerateDescriptionSection}>
@@ -392,11 +373,11 @@ export default function Home2() {
                       </div>
                       <div>
                         <p>Name of Creator:&emsp; {process.nameOfCreator}</p>
-                        <p>Process name:&emsp; {process.processName}</p>
+                        <p>Description:&emsp; {process.processName}</p>
                       </div>
                       <div>
                         <p>
-                          Address of creator:&emsp; {process.addressOfCreator}
+                          Transaction address:&emsp; {process.addressOfCreator}
                         </p>
                       </div>
 
@@ -411,27 +392,7 @@ export default function Home2() {
                       </button>
                     </div>
                   )}
-                  {/* <section className={styles.GenerateDescriptionSection}>
-                    <div>
-                      <p>Category: {process.Category}</p>
-                      <p>Status: {process.Status}</p>
-                    </div>
-                    <div>
-                      <p>Address of creator: {process.addressOfCreator}</p>
-                    </div>
-                    <div>
-                      <p>Name of Creator: {process.nameOfCreator}</p>
-                    </div>
-                    <div>
-                      <p>Pid: {process.pid}</p>
-                      <p>Process name: {process.processName}</p>
-                    </div>
-                    <div>
-                      <p>Time mark: {process.processTime}</p>
-                    </div>
-                  </section> */}
                 </div>
-                {/* </div> */}
               </div>
             ))}
           </section>

@@ -70,7 +70,7 @@ contract SCM {
                 _processName,
                 _nameOfCreator,
                 _addressOfCreator,
-                processId,
+                _pid,
                 _time,
                 _category,
                 _status
