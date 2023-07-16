@@ -40,7 +40,7 @@ To get started with ChainLink and experience the future of decentralized supply 
 
 ## Contribute
 
-We welcome contributions from the open-source community to enhance the capabilities of ChainLink. To contribute, please follow our contribution guidelines. Whether it's suggesting new features, fixing bugs, or improving documentation, every contribution is valuable and helps us build a better decentralized supply chain ecosystem.
+We welcome contributions from the open-source community to enhance the capabilities of ChainLink. To contribute, please follow our contribution guidelines. Whether it is suggesting new features, fixing bugs, or improving documentation, every contribution is valuable and helps us build a better decentralized supply chain ecosystem.
 
 ## Contact
 
