@@ -1,6 +1,6 @@
 # ChainLink
 
-![scm1](https://github.com/AashishNandakumar/Supply-Chain-Management/assets/98106129/35f61a19-c4ed-458b-9384-bf48239d7224)
+![scm1](https://github.com/AashishNandakumar/Supply-Chain-Management/assets/98106129/c64356e0-c1ab-4663-bdd0-19b13494d756)
 
 
 ## Introduction
@@ -21,7 +21,7 @@ At ChainLink, we believe that a transparent and efficient supply chain is the ba
 
 - **Real-time Tracking**: Through our platform, businesses can track their products in real-time, gaining valuable insights into inventory management, logistics, and overall supply chain performance. This real-time visibility allows businesses to make informed decisions, optimize their inventory levels, and improve customer satisfaction through accurate delivery estimates.
 
-![scm6](https://github.com/AashishNandakumar/Supply-Chain-Management/assets/98106129/f2e0f190-d767-4b0a-b42a-9750b3ddb151)
+![scm6](https://github.com/AashishNandakumar/Supply-Chain-Management/assets/98106129/0a33e67d-bb96-430c-a704-adb570204c5b)
 
 
 ## Tech Stack
