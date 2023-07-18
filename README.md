@@ -1,5 +1,8 @@
 # ChainLink
 
+![scm1](https://github.com/AashishNandakumar/Supply-Chain-Management/assets/98106129/35f61a19-c4ed-458b-9384-bf48239d7224)
+
+
 ## Introduction
 
 Welcome to ChainLink, a cutting-edge decentralized supply chain solutions company built on NextJS, Ethereum blockchain, and Solidity. Our mission is to revolutionize the way supply chains operate, bringing transparency, efficiency, and trust to the forefront. With our innovative technology stack and forward-thinking approach, we empower businesses to streamline their supply chain processes and embrace the future of decentralized commerce.
@@ -17,6 +20,9 @@ At ChainLink, we believe that a transparent and efficient supply chain is the ba
 - **Smart Contracts**: Powered by Solidity, our smart contracts facilitate secure and automated interactions among supply chain participants, ensuring trust and eliminating the need for intermediaries. These smart contracts are self-executing and enforceable agreements that automatically trigger actions based on predefined conditions, such as payment release or product delivery. This eliminates the need for manual intervention and reduces the potential for disputes or delays.
 
 - **Real-time Tracking**: Through our platform, businesses can track their products in real-time, gaining valuable insights into inventory management, logistics, and overall supply chain performance. This real-time visibility allows businesses to make informed decisions, optimize their inventory levels, and improve customer satisfaction through accurate delivery estimates.
+
+![scm6](https://github.com/AashishNandakumar/Supply-Chain-Management/assets/98106129/f2e0f190-d767-4b0a-b42a-9750b3ddb151)
+
 
 ## Tech Stack
 
